@@ -327,7 +327,7 @@ https://www.examtopics.com/exams/amazon/aws-certified-cloud-practitioner-clf-c02
   - consolidates the billing in report
   - only work for individual accounts (without cross-account billing)
   - central governance X
-  
+
 # AWS Outposts
 - enable to run AWS on on-prem env.
 - supports a hybrid architecture
