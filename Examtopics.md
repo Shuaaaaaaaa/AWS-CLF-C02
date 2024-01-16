@@ -1,7 +1,7 @@
-https://www.examtopics.com/exams/amazon/aws-certified-cloud-practitioner-clf-c02/view/2/
-
-
-
+https://www.examtopics.com/exams/amazon/aws-certified-cloud-practitioner-clf-c02/view/18/
+last page for free access
+finished review by 2024-01-16
+test taken 20240-01-17
 
 ++++++++++++++++++
 # S3
@@ -20,6 +20,9 @@ https://www.examtopics.com/exams/amazon/aws-certified-cloud-practitioner-clf-c02
 - supports NFS and SMB
 ## AWS FSx File Gateway
 - supports SMB only
+
+# S3 Transfer Acceleration
+- utilized Amazon CloudFront's globally distributed edge locations to accelerate object upload
 
 
 ++++++++++++++++++
@@ -52,12 +55,15 @@ https://www.examtopics.com/exams/amazon/aws-certified-cloud-practitioner-clf-c02
 - capacity reservation (1 year)
 - when traffic predictable, consistent
 - discount up to 75%
-## Savind Plans
+## Saving Plans
 - upfront commitment
 - discount up to 72%
 ## Spot Instances
 - for stateless, fault-tolerant workload
 - no need to run at speific times
+
+# EC2 Image Builder
+- automate creation, maintain, validate, and test EC2 AMIs
 
 ++++++++++++++++++
 # AWS Service Catalog
@@ -120,6 +126,9 @@ https://www.examtopics.com/exams/amazon/aws-certified-cloud-practitioner-clf-c02
 # AWS Elastic Beanstalk
 - deploys app quickly, without manually creating resources
 
+# AWS Health Dashboard
+- centralized location for AWS service availability and operations
+
 ++++++++++++++++++
 # AWS Glue
 - serverless data integration service
@@ -128,6 +137,7 @@ https://www.examtopics.com/exams/amazon/aws-certified-cloud-practitioner-clf-c02
 # Amazon QuickSight
 - business intelligence(BI) at hyperscale
 - create and visualize interactive dashboards
+- includes ML insights
 
 # AWS Athena
 - occasionally run queries for data analysis
@@ -171,6 +181,14 @@ https://www.examtopics.com/exams/amazon/aws-certified-cloud-practitioner-clf-c02
 4. Governance = Program & Project Management
 5. Platform = Data Architecture
 6. Operations = Event Management 
+![CAF Capabilities](CLF-C02/CAF%20Capabilities.png)
+
+# CAF Transformation Journey
+1. Envision phase = domonstrating how cloud will help accelerate your business outcomes
+2. Align phase = identifying capability gaps
+3. Launch phase = delivering pilot initiatives
+4. Scale phase = expanding production pilots and business value
+![CAF Transformation](CLF-C02/CAF%20Transformation.png)
 
 # AWS Well-Architected Framework
 - OSR PC
@@ -184,11 +202,24 @@ https://www.examtopics.com/exams/amazon/aws-certified-cloud-practitioner-clf-c02
 
 # AWS
 - Agility
-  - Speed at whch AWS resources are implemented
+  - provision and deprovision resource *rapidly*
   - Ability to experiment quickly
 - Elasticity
   - Ability to rightsize resources as demand shifts
   - How easily resources can be procured when the are needed
+
+# AWS Shared Responsibility Model
+- full AWS
+  - physical and environmental controls
+  - security "of" the cloud infrastructure
+- shared controls
+  - patch management
+  - configuration management (infra - AWS, OS & DB & Apps - Customer)
+  - awareness & training
+- full customer
+  - service, communication protections, zone security
+  - security "in" the cloud infrastructure
+  - i.e. data transfer between S3 and on-prem apps
 
 # AWS Benefits
 - High economies of scale
@@ -202,6 +233,7 @@ https://www.examtopics.com/exams/amazon/aws-certified-cloud-practitioner-clf-c02
 ++++++++++++++++++
 # AWS Lambda
 - charged by (1) run time (2) # of requests
+- max run time 15mins
 
 # AWS Fargate
 - serverless compute for containers
@@ -245,6 +277,9 @@ https://www.examtopics.com/exams/amazon/aws-certified-cloud-practitioner-clf-c02
 - control traffic at the subnet level
 - define source, destination IP, ports
 
+# VPC Flow Logs
+- provide log information of inbound and outbound traffic on network interfaces in a VPC
+
 ++++++++++++++++++
 # AWS WAF
 - deals with common web attack patterns (XSS, SQL Injection, etc...)
@@ -280,29 +315,44 @@ https://www.examtopics.com/exams/amazon/aws-certified-cloud-practitioner-clf-c02
 ++++++++++++++++++
 # Loosely Coupled Dependencies
 - main advantage of moving from *monolithic to microservices*
+- asynchronous communication and decouple components
+- Amazon SQS (Simple Queue Service), AWS Step Functions
+
+# Refactor
+- or re-architect
+- convert a monotholic application into microservices
 
 ++++++++++++++++++
 # AWS IAM
 ## Credential Report
 - audit credentials for compliance purposes
 ## Access Analyzer
-- identifies whether S3 or IAM role has been shared with external entity
+- identifies whether S3 or IAM role has been shared with *external entity*
+
+# AWS IAM Identity Center
+- AWS single Sign-On
+- provide centralized access to multiple applications and services for their users
+- support SAML 2.0
 
 # AWS KMS (Key Management Service)
-- create, manage, control cryptographic keys
+- create, manage, control cryptographic keys -> *encryption*
 - encrypts EBS
+
+# AWS Secrets Manager
+- manage, retrieve, rotate DB credentials, API keys, other screts throughout lifecycles
+- automate management and rotation of credentials
 
 # AWS STS (Security Token Service)
 - grant temporary, limited-privilege credentials
 - no need for long-term access keys or IAM user credentials
 
-# AWS Secrets Manager
-- manage, retrieve, rotate DB credentials, API keys, other screts throughout lifecycles
+
 
 ++++++++++++++++++
 # AWS Support Plan
 ## Enterprise
 - free guidance and support for operational readiness assessment and risk mitigation
+- designated technical account manager (TAM) to assist in monitoring and optimization
 - email, phone for tech support O
 ## Business
 - email, phone for tech support O
@@ -315,6 +365,9 @@ https://www.examtopics.com/exams/amazon/aws-certified-cloud-practitioner-clf-c02
 # AWS Organizations
 - consolidate multiple AWS accounts into an organization
 - provides centralized governance and billing for AWS env. including multiple accounts
+- create new AWS accounts
+- group multiple accounts to organize workflows
+- apply policies to groups of accounts
 
 # AWS CloudMap
 - creates and maintains a map of backend services
@@ -336,6 +389,9 @@ https://www.examtopics.com/exams/amazon/aws-certified-cloud-practitioner-clf-c02
 # Remote work
 - w/ Windows Virtual Desktops and Applications
   - Amazon AppStream 2.0, Amazon WorkSpaces
+
+# Amazon AppStream 2.0
+- stream desktop applications securely to a web browser
 
 # AWS Global Accelerator
 - improve application availability, performance, security using AWS global network
@@ -367,3 +423,10 @@ https://www.examtopics.com/exams/amazon/aws-certified-cloud-practitioner-clf-c02
 
 # Amazon Textract
 - ML to extract text from scanend documents
+
+# Amazon Personalize
+- ML for personalization
+
+++++++++++++++++++
+# AWS Snowmobile
+- 50 PTB data transfer from onprem to AWS
