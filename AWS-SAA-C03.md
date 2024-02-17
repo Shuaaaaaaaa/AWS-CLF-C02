@@ -17,6 +17,7 @@
 - Low-cost storage for data accessed monthly that requires milliseconds retrieval
 ### One Zone-IA: infrequent access
 - Infrequently accessed data in a single Availability Zone (AZ) for cost savings
+- usually as a backup in another Region for disaster recovery
 ### Glacier Instant Retrieval: archive
 - Low-cost storage for long-lived data, with retrieval in milliseconds
 ### Glacier Flexible Retrieval: archive
@@ -25,6 +26,8 @@
 - Lowest-cost cloud storage for long-term archived data, with retrieval in hours
 ### AWS Config
 - with appropriate rules, ensure S3 do not have unauthorized configuration changes
+## Multipart Upload
+- single upload failure -> use multipart upload to S3
 ## Amazon CloudFront
 - reduce data transfer costs by setting it as the origin for S3
 ### Prevent Direct Access to S3
@@ -35,10 +38,13 @@
 # Data
 ## Amazon Kinesis Data Firehose
 - ingest data, uploads data to S3
+- persist data on S3
 ## Amazon Kinesis Data Analytics
+- query data(?)
 - transforms and analyzes streaming data in real time
 - can't use to query specific data
 ## Amazon Kinesis Data Streams
+- capture the data from websites
 - handle streaming and clickstream data
 - built for high-volume, real-time clickstream analytics
 - can't send data to DynamoDB, supports S3, Redshift, OpenSearch Service, Splunk, Datadog...
@@ -73,7 +79,7 @@
 ### General Purpose SSD
 - up to 16,000 IOPS for each volume
 - baseline I/O performance 3 IOPS for each GB
-### Provisioned IOPS SSD
+### Provisioned IOPS SSD (io1, io2)
 - up to 64,000 IOPS for each volume
 - high rate of random disk reads and writes
 ### Throughput Optimized HDD
@@ -119,6 +125,9 @@
 # EC2
 ## Spot Instance
 - Cancel the spot request, THEN Terminate the spot instance
+## SSD-Backed Storage Optimized (i2) instance
+- higher than 365,000 random IOPS
+- instance store has no additional cost
 ## Auto Scaling
 - primary server shouldn't be in a auto scaling group with compute nodes
 ### With SQS
@@ -149,9 +158,11 @@
 - good fit for HTTP use cases, that require static IP addresses
 - good fit for HTTP use cases, that require deterministic, fast regional failover
 
-# LB
+# Elastic Load Balancer
+- waits 300 secs before deregistration process
 ## Application Load Balancer
 - can create a listener rule to redirect HTTP traffic to HTTPS
+- within a single region
 ## Network Load Balancer
 
 ## Gateway Load Balancer
@@ -204,7 +215,7 @@
 ### Minimize long-running calls in an external service
 - use AWS SQS to offload the long-running requests for asynchronous processing by separate workers
 ## Amazon Cognito
-- provide sign-up and sign-in options for web users and mobile app suers
+- provide sign-up and sign-in options for web users and mobile app users
 
 
 # Database
@@ -212,6 +223,7 @@
 - Amazon Aurora, Amazon RDS for PostgreSQL
 ## Structured for Analytics
 - Amazon Redshift
+  - designed for online analytic processing (OLAP)
 ## RDS
 - multi-AZ set up O
 ### Provisioned IOPS SSD 
@@ -271,8 +283,14 @@
 # DR
 ## active/passive:
 - Backup and Restore: RPO/RTO Hours
+  - backup application, configuration, data to s3
+  - when fail, recreate them
 - Pilot Light: RPO/RTO 10s of minutes
+  - recreates an existing application, stop all ec2
+  - start ec2 when fail
 - Warm Standby: RPO/RTO Minutes
+  - recreates an existing application, keep ec2 alive
+  - have live traffic toward the ec2
 ## active/active: 
 - Multi-site active/active: RPO/RTO Real-time
 
